@@ -1,0 +1,8 @@
+{
+    "message": "Carregando...",
+    "success": "Tema salvo com sucesso!",
+    "error": "Erro ao salvar tema!",
+    "select": "Tema selecionado!",
+    "confirm": "Confirmar",
+    "theme_required": "Por favor, selecione um tema!"
+}

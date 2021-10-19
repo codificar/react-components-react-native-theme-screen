@@ -1,0 +1,8 @@
+{
+    "message": "Loading...",
+    "success": "Save theme success!",
+    "error": "Save theme error!",
+    "select": "Theme selected!",
+    "confirm": "Confirm",
+    "theme_required": "Please, select a theme!"
+}
