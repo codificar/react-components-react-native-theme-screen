@@ -6,8 +6,12 @@ import axios from 'axios';
  * @param {String} url 
  * @returns 
  */
-export function getThemes(url) {
-    return axios.get(`${url}/api/application/themes`);
+export function getThemes(url, token) {
+    return axios.get(`${url}/api/application/themes`, {
+        params: {
+            token
+        }
+    });
 }
 
 /**

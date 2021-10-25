@@ -14,6 +14,8 @@ import { showToast } from '../services/util';
 import Toast from 'react-native-root-toast';
 import strings from '../lang/strings';
 
+const mark = require('react-native-theme-screen/src/img/tick-mark.png');
+
 class ThemeSelectorScreen extends Component {
     constructor(props) {
         super(props);
@@ -41,7 +43,8 @@ class ThemeSelectorScreen extends Component {
             upload_url: '',
             themes: [],
             theme_id: null,
-            navigateAfterConfirm: navigateAfterConfirm
+            navigateAfterConfirm: navigateAfterConfirm,
+            selected_theme: null
         }
     }
 
@@ -52,16 +55,17 @@ class ThemeSelectorScreen extends Component {
     async getThemes() {
         try {
             this.setState({ isLoading: true });
-            const { data } = await getThemes(this.state.url);
+            const { data } = await getThemes(this.state.url, this.state.token);
 
-            let { menu_name, menu_frase, themes, url } = data;
+            let { menu_name, menu_frase, themes, url, selected_theme } = data;
 
             this.setState({
                 menu_name,
                 menu_frase,
                 themes,
                 upload_url: url,
-                isLoading: false
+                isLoading: false,
+                selected_theme
             });
             
         } catch (error) {
@@ -134,12 +138,21 @@ class ThemeSelectorScreen extends Component {
                 style={styles.list_item}
                 onPress={() => this.selectTheme(data.theme_id)}
             >
-                <Image
-                    style={styles.theme_logo}
-                    source={{
-                        uri: `${this.state.upload_url}/${data.app_image_icon}`,
-                    }}
-                />
+                <>
+                    {
+                        this.state.selected_theme == data.theme_id &&
+                        <Image
+                                style={styles.mark}
+                                source={mark}
+                            />
+                    }
+                    <Image
+                        style={styles.theme_logo}
+                        source={{
+                            uri: `${this.state.upload_url}/${data.app_image_icon}`,
+                        }}
+                    />
+                </>
             </TouchableOpacity>
         ));
 
@@ -235,6 +248,14 @@ const styles = StyleSheet.create({
     btn_text: {
         color: '#fff',
         fontWeight: 'bold'
+    },
+    mark: {
+        width: 30,
+        height: 30,
+        position: 'absolute',
+        zIndex: 999,
+        top: -8,
+        right: -8
     }
 });
 
