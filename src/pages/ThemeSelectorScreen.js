@@ -122,7 +122,8 @@ class ThemeSelectorScreen extends Component {
 
     selectTheme(theme_id) {
         this.setState({
-            theme_id
+            theme_id,
+            selected_theme: theme_id
         });
 
         showToast(
