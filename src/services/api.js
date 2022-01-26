@@ -24,13 +24,14 @@ export function getThemes(url, token) {
  * @param {String} type 
  * @returns 
  */
-export function saveUserTheme(url, id, token, theme_id, type) {
+export function saveUserTheme(url, id, token, theme_id, type, is_register) {
     return axios.post(`${url}/api/themes/save_user`, {
         user_id: id,
         id,
         token,
         theme_id,
-        type
+        type,
+        is_register
     });
 }
 
@@ -44,12 +45,13 @@ export function saveUserTheme(url, id, token, theme_id, type) {
  * @param {String} type 
  * @returns 
  */
- export function saveProviderTheme(url, id, token, theme_id, type) {
+ export function saveProviderTheme(url, id, token, theme_id, type, is_register) {
     return axios.post(`${url}/api/themes/save_provider`, {
         provider_id: id,
         id,
         token,
         theme_id,
-        type
+        type,
+        is_register
     });
 }

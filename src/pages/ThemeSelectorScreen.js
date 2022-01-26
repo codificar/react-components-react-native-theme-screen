@@ -90,14 +90,16 @@ class ThemeSelectorScreen extends Component {
                     this.state.id,
                     this.state.token,
                     this.state.theme_id,
-                    this.state.type
+                    this.state.type,
+                    this.state.is_register
                 ) :
                 await saveProviderTheme(
                     this.state.url,
                     this.state.id,
                     this.state.token,
                     this.state.theme_id,
-                    this.state.type
+                    this.state.type,
+                    this.state.is_register
                 );
 
             if (data.success) {
